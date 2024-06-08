@@ -10,7 +10,7 @@ pub use modules::*;
 
 pub use types::*;
 
-#[cfg(target_os = "linux")]
+#[cfg(target_os = "freebsd")]
 pub use misc::*;
 
 /* ------------------------ <security/pam_appl.h> -------------------------- */
@@ -213,7 +213,7 @@ mod types {
 
 /* ----------------------- <security/pam_misc.h> --------------------------- */
 // FIXME: Investigate, if pam_misc is supported on any other platform
-#[cfg(target_os = "linux")]
+#[cfg(target_os = "freebsd")]
 mod misc {
     use crate::{PamHandle, PamResult, PamReturnCode};
     use pam_sys as ffi;

@@ -43,14 +43,14 @@ impl PamEnvList {
     }
 }
 
-#[cfg(target_os = "linux")]
+#[cfg(target_os = "freebsd")]
 impl Drop for PamEnvList {
     fn drop(&mut self) {
         unsafe { raw::pam_misc_drop_env(self.ptr as *mut *mut c_char) };
     }
 }
 
-#[cfg(not(target_os = "linux"))]
+#[cfg(not(target_os = "freebsd"))]
 impl Drop for PamEnvList {
     fn drop(&mut self) {
         let mut ptr = self.ptr;
